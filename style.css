@@ -1,0 +1,56 @@
+#map {
+  height: 680px;
+  max-width: 90%;
+  margin: 5em auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  font-family: "Poppins", sans-serif;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  /* background-color: lightpink; */
+  max-width: 90%;
+  align-items: center;
+  margin: 3em auto;
+}
+.cards {
+  /* background-color: lightskyblue; */
+  height: 150px;
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  align-items: center;
+}
+.card {
+  /* background-color: lime; */
+  height: 100px;
+  width: 200px;
+  background-color: rgb(223, 217, 217);
+  /* border-radius: 5%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  margin: 5px;
+}
+.card > p {
+  font-weight: bold;
+}
+.one {
+  border-left: 5px solid lime;
+}
+.two {
+  border-left: 5px solid blue;
+}
+.three {
+  border-left: 5px solid red;
+}
