@@ -1,6 +1,8 @@
 "use strict";
 const api_url = "https://api.covid19india.org/data.json";
 // const test_url = "raw_data26.csv";
+
+//hardcodes some of the latitudes and longitudes as i could not find an api that gives back lat and lng of a stat name
 const allStateObjets = [
   {
     Statename: "Tamil Nadu",
@@ -71,6 +73,8 @@ const allStateObjets = [
     latlan: [32.084206, 77.571167],
   },
 ];
+
+//creating a map object (I used leaflet.js)
 const map = L.map("map").setView([22.37039758449679, 77.8240771399801], 5);
 
 //adding map tiles
@@ -78,6 +82,8 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
+
+//getting data state wise covid data from an api
 
 async function getCovidData() {
   const response = await fetch(api_url);
@@ -88,9 +94,11 @@ async function getCovidData() {
   document.querySelector("#confirmed").innerText = +data.statewise[0].confirmed;
   document.querySelector("#deaths").innerText = +data.statewise[0].deaths;
 
+  //iterating through each state in the hardcoded "allStateObjets" array and finding the relevant object containg the data respective to the state
+
   allStateObjets.forEach((state) => {
     const currentState = statesData.find((s) => state.Statename === s.state);
-
+    //adding the cirle and the pop up to the map
     L.circle(state.latlan, {
       color: "red",
       fillColor: "#f03",
